@@ -45,7 +45,7 @@ plt.title('square_f')
 plt.xlabel('f/Hz')
 plt.ylabel('amplitude')
 plt.tight_layout()
-plt.savefig('./figure/task_1_4fft.png', dpi=300)
+plt.savefig('./figure/task_1/task_1_4fft.png', dpi=300)
 
 
 plt.figure()
@@ -70,6 +70,6 @@ plt.title('square_wav')
 plt.xlabel('t/s')
 plt.ylabel('amplitude')
 plt.tight_layout()
-plt.savefig('./figure/task_1_4waveform.png', dpi=300)
+plt.savefig('./figure/task_1/task_1_4waveform.png', dpi=300)
 
 
