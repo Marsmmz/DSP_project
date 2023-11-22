@@ -30,24 +30,47 @@ plt.savefig('./figure/task_2/task_2_waveform.png',  dpi=300)
 
 # use Short Time Fourier Transform to analize
 for window_width in [200,400,1000,2000,4000]:
-
-    freq, time, Zxx = signal.stft(wav, fs, nperseg=window_width)
+    freq, time, Zxx = signal.stft(wav, fs, window=signal.get_window('boxcar', window_width), nperseg=window_width) # if use hanning window, the result can be much better
 
     plt.figure()
     # To make it clear for visualization, we only focus on frequencies less than 1000
     plt.pcolormesh(time, freq[0:int(1000/(fs/window_width))], np.abs(Zxx[0:int(1000/(fs/window_width)),:]), vmin=0, vmax=amp, shading='gouraud')
-    plt.title(f'STFT Magnitude width {window_width}')
+    plt.title(f'STFT Magnitude width {window_width} box')
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_linear_w{window_width}', dpi=600)
+    plt.savefig(f'./figure/task_2/task_2_time_freq_linear_w{window_width}_box', dpi=600)
 
     plt.figure()
     # To make it clear for visualization, we only focus on frequencies less than 1000
     # use log scale 
     plt.pcolormesh(time, freq[0:int(1000/(fs/window_width))], np.abs(Zxx[0:int(1000/(fs/window_width)),:]), shading='gouraud', norm=matplotlib.colors.LogNorm())
-    plt.title(f'STFT Log Magnitude width {window_width}')
+    plt.title(f'STFT Log Magnitude width {window_width} box')
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_log_w{window_width}' , dpi=600)
+    plt.savefig(f'./figure/task_2/task_2_time_freq_log_w{window_width}_box' , dpi=600)
+    
+    
+# use default hann window
+for window_width in [200,400,1000,2000,4000]:
+    freq, time, Zxx = signal.stft(wav, fs, nperseg=window_width)
+
+    plt.figure()
+    # To make it clear for visualization, we only focus on frequencies less than 1000
+    plt.pcolormesh(time, freq[0:int(1000/(fs/window_width))], np.abs(Zxx[0:int(1000/(fs/window_width)),:]), vmin=0, vmax=amp, shading='gouraud')
+    plt.title(f'STFT Magnitude width {window_width} Hann')
+    plt.ylabel('frequency/Hz')
+    plt.xlabel('time/s')
+    plt.colorbar()
+    plt.savefig(f'./figure/task_2/task_2_time_freq_linear_w{window_width}_Hann', dpi=600)
+
+    plt.figure()
+    # To make it clear for visualization, we only focus on frequencies less than 1000
+    # use log scale 
+    plt.pcolormesh(time, freq[0:int(1000/(fs/window_width))], np.abs(Zxx[0:int(1000/(fs/window_width)),:]), shading='gouraud', norm=matplotlib.colors.LogNorm())
+    plt.title(f'STFT Log Magnitude width {window_width} Hann')
+    plt.ylabel('frequency/Hz')
+    plt.xlabel('time/s')
+    plt.colorbar()
+    plt.savefig(f'./figure/task_2/task_2_time_freq_log_w{window_width}_Hann' , dpi=600)
