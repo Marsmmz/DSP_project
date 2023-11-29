@@ -62,7 +62,7 @@ for threshold_param in np.arange(0.2,1.0,0.1):
     result_list = []
     for time in range(result.shape[0]):
         result_list.append([])
-        result_list[time].append(f'  {time*length:.3}-{(time+1)*length:.3}s  ') # since in stft, input signal is extended at both ends to center the first windowed segment on the first input point
+        result_list[time].append(f'  {time*length:.3f}-{(time+1)*length:.3f}s  ') # since in stft, input signal is extended at both ends to center the first windowed segment on the first input point
         time_key = np.where(result[time]==1)[0]
         for key_idx in range(len(time_key)):
             result_list[time].append(key_idx2name[time_key[key_idx]])
