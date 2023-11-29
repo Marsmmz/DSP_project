@@ -26,7 +26,7 @@ plt.plot(t,wav)
 plt.xlabel('t/s')
 plt.ylabel('amp')
 plt.title('waveform')
-plt.savefig('./figure/task_2/task_2_waveform.png',  dpi=300)
+plt.savefig('./../figure/task_2/task_2_waveform.png',  dpi=300)
 
 # use Short Time Fourier Transform to analize
 for window_width in [200,400,1000,2000,4000]:
@@ -39,7 +39,7 @@ for window_width in [200,400,1000,2000,4000]:
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_linear_w{window_width}_box', dpi=600)
+    plt.savefig(f'./../figure/task_2/task_2_time_freq_linear_w{window_width}_box', dpi=600)
 
     plt.figure()
     # To make it clear for visualization, we only focus on frequencies less than 1000
@@ -49,7 +49,7 @@ for window_width in [200,400,1000,2000,4000]:
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_log_w{window_width}_box' , dpi=600)
+    plt.savefig(f'./../figure/task_2/task_2_time_freq_log_w{window_width}_box' , dpi=600)
     
     
 # use default hann window
@@ -63,7 +63,7 @@ for window_width in [200,400,1000,2000,4000]:
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_linear_w{window_width}_Hann', dpi=600)
+    plt.savefig(f'./../figure/task_2/task_2_time_freq_linear_w{window_width}_Hann', dpi=600)
 
     plt.figure()
     # To make it clear for visualization, we only focus on frequencies less than 1000
@@ -73,4 +73,4 @@ for window_width in [200,400,1000,2000,4000]:
     plt.ylabel('frequency/Hz')
     plt.xlabel('time/s')
     plt.colorbar()
-    plt.savefig(f'./figure/task_2/task_2_time_freq_log_w{window_width}_Hann' , dpi=600)
+    plt.savefig(f'./../figure/task_2/task_2_time_freq_log_w{window_width}_Hann' , dpi=600)

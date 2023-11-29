@@ -8,11 +8,12 @@ import matplotlib
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
-music_path = './DFH.npy' # Dong Fang Hong music, repeatition for the first few notes, lasting for 8 seconds. 
+
+fs = 16000
+music_path = './../resource/music.npy'
 data = np.squeeze(np.load(music_path))
-fs = 8000
-t = np.arange(0,8,1/fs)
-length = 0.25 
+t = np.arange(0,4.75,1/fs)
+length = 0.25
 f = 27.5*2**(np.arange(0,88,1)/12) # from A0 to C8 88 keys in total
 window_width = (int)(length*fs)
 trunc_freq = 4000
@@ -30,11 +31,11 @@ for i in range(88):
 # plt.plot(t,data)
 # plt.xlabel('t/s')
 # plt.ylabel('amp')
-# plt.savefig('./figure/task_4/music_waveform.png', dpi=300)
+# plt.savefig('./../figure/task_3/music_waveform.png', dpi=300)
 
 freq, time, Zxx = signal.stft(data, fs, window=signal.get_window('boxcar', window_width), nperseg=window_width, boundary=None, noverlap=0) # since we already know the preserving time of each note, we don't need overlap, and we won't extend signal on both end
 
-table_file = open("./result_tabel/task_3.txt","a")
+table_file = open("./../result_tabel/task_3.txt","a")
 table_file.truncate(0)
 table_file.close()
 plt.figure()
@@ -56,7 +57,7 @@ for threshold_param in np.arange(0.2,1.0,0.1):
     plt.title(f'0.{int(threshold_param*10)}')
     plt.xlabel('time/s')
     plt.ylabel('keys')
-    plt.scatter(keys[1]*length,keys[0],s=0.5)
+    plt.scatter(keys[1]*length,keys[0],s=0.8)
     
     result_list = []
     for time in range(result.shape[0]):
@@ -65,7 +66,7 @@ for threshold_param in np.arange(0.2,1.0,0.1):
         time_key = np.where(result[time]==1)[0]
         for key_idx in range(len(time_key)):
             result_list[time].append(key_idx2name[time_key[key_idx]])
-    table_file = open("./result_tabel/task_4.txt","a")
+    table_file = open("./../result_tabel/task_3.txt","a")
     table_file.write(f'threshold_param:0.{int(threshold_param*10)}:\n')
     table_file.write(tabulate(result_list, colalign=("center", "center")))
     table_file.write('\n\n')
