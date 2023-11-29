@@ -30,7 +30,7 @@ plt.savefig('./figure/task_2/task_2_waveform.png',  dpi=300)
 
 # use Short Time Fourier Transform to analize
 for window_width in [200,400,1000,2000,4000]:
-    freq, time, Zxx = signal.stft(wav, fs, window=signal.get_window('boxcar', window_width), nperseg=window_width) # if use hanning window, the result can be much better
+    freq, time, Zxx = signal.stft(wav, fs, window=signal.get_window('boxcar', window_width), nperseg=window_width, noverlap=0) # if use hanning window, the result can be much better
 
     plt.figure()
     # To make it clear for visualization, we only focus on frequencies less than 1000
