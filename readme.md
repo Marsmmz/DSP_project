@@ -6,7 +6,7 @@ Instead of using Matlab, I've used Python to write this project since I'm more f
 - **In task 1**, four different waveforms are constructed, and they are transformed to the frequency domain using FFT (only preserving opsitive frequencies).
 - **In task 2**, a specific waveform is constructed as required by the instruction, STFT are done using both `boxcar` window (as required) and `Hann` window with several different window width.
 - **In task 3**, xxxxx, for `stft`, boundary = None, noverlap=0.
-- **In task 4**, use artificially composed music  from matlab course in summer semester.   prove the correctness of this code.
+- **In task 4**, use artificially composed music  from matlab course in summer semester.   prove the correctness of this code.  Perhaps it is better to add some random noise to the input latter.
 
 
 ## environment
